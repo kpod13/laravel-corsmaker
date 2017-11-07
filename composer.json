@@ -1,0 +1,43 @@
+{
+    "name": "kpod13/laravel-corsmaker",
+    "description": "This package allows you to return CORS headers in http respnses with Laravel middleware.",
+    "keywords": ["laravel", "cors", "crossdomain", "api"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Timur Vasyunin",
+            "email": "timur.vasyunin@icloud.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.0",
+        "illuminate/support": "*",
+        "symfony/http-foundation": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kpod13\\CorsMaker\\": "src/"
+        },
+        "classmap": [
+            "tests"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Kpod13\\CorsMaker\\ServiceProvider"
+            ]
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.4",
+        "squizlabs/php_codesniffer": "3.*"
+
+    },
+    "scripts": {
+        "test": "phpunit",
+        "check-style": "phpcs -p --standard=PSR2 src/",
+        "fix-style": "phpcbf -p --standard=PSR2 src/"
+    }
+}
