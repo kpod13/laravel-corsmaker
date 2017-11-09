@@ -935,7 +935,7 @@
                 "phpunit/php-file-iterator": "^1.4.2",
                 "phpunit/php-text-template": "^1.2.1",
                 "phpunit/php-token-stream": "^2.0",
-                "sebastian/code-unit-reverse-lookup": "^1.0.1",
+                "sebastian/code-units-reverse-lookup": "^1.0.1",
                 "sebastian/environment": "^3.0",
                 "sebastian/version": "^2.0.1",
                 "theseer/tokenizer": "^1.1"
@@ -1308,16 +1308,16 @@
             "time": "2017-11-02T14:48:53+00:00"
         },
         {
-            "name": "sebastian/code-unit-reverse-lookup",
+            "name": "sebastian/code-units-reverse-lookup",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/sebastianbergmann/code-unit-reverse-lookup.git",
+                "url": "https://github.com/sebastianbergmann/code-units-reverse-lookup.git",
                 "reference": "3488be0a7b346cd6e5361510ed07e88f9bea2e88"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/code-unit-reverse-lookup/zipball/3488be0a7b346cd6e5361510ed07e88f9bea2e88",
+                "url": "https://api.github.com/repos/sebastianbergmann/code-units-reverse-lookup/zipball/3488be0a7b346cd6e5361510ed07e88f9bea2e88",
                 "reference": "3488be0a7b346cd6e5361510ed07e88f9bea2e88",
                 "shasum": ""
             },
@@ -1349,7 +1349,7 @@
                 }
             ],
             "description": "Looks up which function or method a line of code belongs to",
-            "homepage": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/",
+            "homepage": "https://github.com/sebastianbergmann/code-units-reverse-lookup/",
             "time": "2017-03-04T10:23:55+00:00"
         },
         {

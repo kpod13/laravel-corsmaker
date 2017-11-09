@@ -4,8 +4,6 @@ namespace Kpod13\CorsMaker;
 use Closure;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Kpod13\CorsMaker\CorsMakerService;
-
 
 class CorsMakerHandler {
 
@@ -14,15 +12,30 @@ class CorsMakerHandler {
      */
     protected $corsMaker;
 
+  /**
+   * CorsMakerHandler constructor.
+   */
     public function __construct() {
         $this->corsMaker = new CorsMakerService();
     }
 
-    public function handle(Request $request, Closure $next) {
+  /**
+   * @param Request $request
+   * @param Closure $next
+   *
+   * @return Response
+   */
+    public function handle(Request $request, Closure $next): Response {
         $response = $next($request);
-        // Manage CORS if it is CORS request
-        if ($this->corsMaker->isCorsRequest($request)) {
-            return $this->corsMaker->addCorsHeaders($request, $response);
+
+        // Add headers to response of simple crossdomain request
+        if ($this->corsMaker->isSimpleCorsRequest($request)) {
+            return $this->corsMaker->addSimpleCorsHeaders($request, $response);
+        }
+
+        // Add headers to response of preflight crossdomain request
+        if ($this->corsMaker->isPrefliedCorsRequest($request)) {
+            return $this->corsMaker->addPreflightCorsHeaders($request, $response);
         }
 
         return $response;

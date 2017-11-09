@@ -33,7 +33,7 @@ class ServiceProvider extends BaseServiceProvider
     public function register()
     {
         $this->app->singleton(CorsMakerService::class, function ($app) {
-            return new CorsMakerService(config('corsmaker'));
+            return new CorsMakerService();
         });
     }
 }
