@@ -2,7 +2,8 @@
 
 namespace Kpod13\CorsMaker;
 
-class MethodMatcher {
+class MethodMatcher
+{
 
     /**
      * Check matching method to array of allowed methods
@@ -13,11 +14,16 @@ class MethodMatcher {
      * @return bool
      *
      */
-    public static function match(string $method, array $allowedMethods): bool {
-        if (empty($allowedMethods) || empty($method)) return FALSE;
-        foreach ($allowedMethods as $allowedMethod) {
-            if ($method == $allowedMethod || $allowedMethod == '*') return TRUE;
+    public static function match(string $method, array $allowedMethods): bool
+    {
+        if (empty($allowedMethods) || empty($method)) {
+            return false;
         }
-        return FALSE;
+        foreach ($allowedMethods as $allowedMethod) {
+            if ($method == $allowedMethod || $allowedMethod == '*') {
+                return true;
+            }
+        }
+        return false;
     }
 }

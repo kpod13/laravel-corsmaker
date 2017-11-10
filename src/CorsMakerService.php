@@ -5,7 +5,8 @@ namespace Kpod13\CorsMaker;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class CorsMakerService {
+class CorsMakerService
+{
 
     /**
      * This function check and returns normalized options
@@ -14,7 +15,8 @@ class CorsMakerService {
      *
      * @return array
      */
-    private function normalizeOptions(array $options): array {
+    private function normalizeOptions(array $options): array
+    {
         $template = [
             'rule' => [
                 'request_headers' => [
@@ -23,7 +25,7 @@ class CorsMakerService {
                     'locations' => [],
                 ],
                 'cors_headers' => [
-                    'allow_credentials' => FALSE,
+                    'allow_credentials' => false,
                     'allowed_headers' => [],
                     'allowed_methods' => [],
                     'max_age' => 0
@@ -58,12 +60,13 @@ class CorsMakerService {
      *
      * @return bool
      */
-    public function isSimpleCorsRequest(Request $request): bool {
+    public function isSimpleCorsRequest(Request $request): bool
+    {
         $simpleMethods = ['GET', 'POST', 'HEAD'];
         if ($request->hasHeader('Origin') and in_array($request->getMethod(), $simpleMethods)) {
-            return TRUE;
+            return true;
         }
-        return FALSE;
+        return false;
     }
 
     /**
@@ -71,9 +74,12 @@ class CorsMakerService {
      *
      * @return bool
      */
-    public function isPrefliedCorsRequest(Request $request): bool {
-        if ($request->hasHeader('Origin') and $request->getMethod() == 'OPTIONS') return TRUE;
-        return FALSE;
+    public function isPrefliedCorsRequest(Request $request): bool
+    {
+        if ($request->hasHeader('Origin') and $request->getMethod() == 'OPTIONS') {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -84,7 +90,8 @@ class CorsMakerService {
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function addSimpleCorsHeaders(Request $request, Response $response): Response {
+    public function addSimpleCorsHeaders(Request $request, Response $response): Response
+    {
         $options = $this->normalizeOptions(config('corsmaker'));
         $rules = $options['rules'];
         foreach ($rules as $rule) {
@@ -122,7 +129,8 @@ class CorsMakerService {
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function addPreflightCorsHeaders(Request $request, Response $response): Response {
+    public function addPreflightCorsHeaders(Request $request, Response $response): Response
+    {
         $options = $this->normalizeOptions(config('corsmaker'));
         $rules = $options['rules'];
         foreach ($rules as $rule) {
@@ -134,11 +142,15 @@ class CorsMakerService {
                 continue;
             }
             if ($request->headers->has('Access-Control-Request-Method')) {
-                if (!MethodMatcher::match($request->headers->get('Access-Control-Request-Method'), $rule['request_headers']['methods'])) continue;
+                if (!MethodMatcher::match($request->headers->get('Access-Control-Request-Method'), $rule['request_headers']['methods'])) {
+                    continue;
+                }
             }
             if ($request->headers->has('Access-Control-Request-Headers')) {
                 $accessControlRequestHeaders = explode(',', $request->headers->get('Access-Control-Request-Headers'));
-                if (!HeadersMatcher::match($accessControlRequestHeaders, $rule['request_headers']['headers'])) continue;
+                if (!HeadersMatcher::match($accessControlRequestHeaders, $rule['request_headers']['headers'])) {
+                    continue;
+                }
             }
 
             // Add headers to response

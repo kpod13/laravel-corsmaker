@@ -2,8 +2,8 @@
 
 namespace Kpod13\CorsMaker;
 
-
-class RegexpChecker {
+class RegexpChecker
+{
 
     /**
      * Check input string is regexp
@@ -12,9 +12,12 @@ class RegexpChecker {
      *
      * @return bool
      */
-    public static function check(string $string): bool {
+    public static function check(string $string): bool
+    {
         $pattern = '/^\/.*\/.?$/i';
-        if (preg_match($pattern, $string)) return TRUE;
-        return FALSE;
+        if (preg_match($pattern, $string)) {
+            return true;
+        }
+        return false;
     }
 }

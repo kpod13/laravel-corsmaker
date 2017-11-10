@@ -2,7 +2,8 @@
 
 namespace Kpod13\CorsMaker;
 
-class LocationMatcher {
+class LocationMatcher
+{
 
     /**
      * Match location URI to array of patterns (strings of regexps)
@@ -12,17 +13,24 @@ class LocationMatcher {
      *
      * @return bool
      */
-    public static function match(string $location, array $locationPatterns): bool {
-        if ($location == '' || empty($locationPatterns)) return FALSE;
+    public static function match(string $location, array $locationPatterns): bool
+    {
+        if ($location == '' || empty($locationPatterns)) {
+            return false;
+        }
         foreach ($locationPatterns as $pattern) {
-            if ($pattern == '*') return TRUE;
+            if ($pattern == '*') {
+                return true;
+            }
             if (RegexpChecker::check($pattern)) {
                 if (preg_match($pattern, $location)) {
-                    return TRUE;
+                    return true;
                 }
             }
-            if (substr_count(strtolower($location), strtolower($pattern), 0) > 0) return TRUE;
+            if (substr_count(strtolower($location), strtolower($pattern), 0) > 0) {
+                return true;
+            }
         }
-        return FALSE;
+        return false;
     }
 }

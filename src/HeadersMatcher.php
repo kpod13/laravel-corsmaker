@@ -2,7 +2,8 @@
 
 namespace Kpod13\CorsMaker;
 
-class HeadersMatcher {
+class HeadersMatcher
+{
 
     /**
      * Check matching header to array of allowed methods
@@ -12,14 +13,21 @@ class HeadersMatcher {
      *
      * @return bool
      */
-    public static function match(array $requestedHeaders, array $allowedHeaders): bool {
-        if (empty($allowedHeaders) || empty($requestedHeaders)) return FALSE;
+    public static function match(array $requestedHeaders, array $allowedHeaders): bool
+    {
+        if (empty($allowedHeaders) || empty($requestedHeaders)) {
+            return false;
+        }
         $countHeaders = count($requestedHeaders);
         $countMatches = 0;
         foreach ($requestedHeaders as $requestedHeader) {
-            if (in_array($requestedHeader, $allowedHeaders)) $countMatches++;
+            if (in_array($requestedHeader, $allowedHeaders)) {
+                $countMatches++;
+            }
         }
-        if ($countMatches === $countHeaders) return TRUE;
-        return FALSE;
+        if ($countMatches === $countHeaders) {
+            return true;
+        }
+        return false;
     }
 }

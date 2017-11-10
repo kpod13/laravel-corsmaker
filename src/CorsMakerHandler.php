@@ -1,11 +1,13 @@
 <?php
 
 namespace Kpod13\CorsMaker;
+
 use Closure;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class CorsMakerHandler {
+class CorsMakerHandler
+{
 
     /**
      * @var CorsMakerService
@@ -15,7 +17,8 @@ class CorsMakerHandler {
   /**
    * CorsMakerHandler constructor.
    */
-    public function __construct() {
+    public function __construct()
+    {
         $this->corsMaker = new CorsMakerService();
     }
 
@@ -25,7 +28,8 @@ class CorsMakerHandler {
    *
    * @return Response
    */
-    public function handle(Request $request, Closure $next): Response {
+    public function handle(Request $request, Closure $next): Response
+    {
         $response = $next($request);
 
         // Add headers to response of simple crossdomain request
