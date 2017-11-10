@@ -25,6 +25,8 @@ class LocationMatcher
             if (RegexpChecker::check($pattern)) {
                 if (preg_match($pattern, $location)) {
                     return true;
+                } else {
+                    return false;
                 }
             }
             if (substr_count(strtolower($location), strtolower($pattern), 0) > 0) {

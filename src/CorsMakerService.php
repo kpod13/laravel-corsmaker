@@ -102,7 +102,7 @@ class CorsMakerService
             if (!MethodMatcher::match($request->getMethod(), $rule['request_headers']['methods'])) {
                 continue;
             }
-            if (!LocationMatcher::match('/' . $request->getBasePath(), $rule['request_headers']['locations'])) {
+            if (!LocationMatcher::match('/' . $request->path(), $rule['request_headers']['locations'])) {
                 continue;
             }
 
@@ -116,7 +116,6 @@ class CorsMakerService
             if (!empty($rule['cors_headers']['max_age'])) {
                 $response = ($response)->header('Access-Control-Max-Age', $rule['cors_headers']['max_age']);
             }
-            break;
         }
         return $response;
     }
@@ -138,7 +137,7 @@ class CorsMakerService
             if (!OriginMatcher::match($request->headers->get('Origin'), $rule['request_headers']['origin'])) {
                 continue;
             }
-            if (!LocationMatcher::match('/' . $request->getBasePath(), $rule['request_headers']['locations'])) {
+            if (!LocationMatcher::match('/' . $request->path(), $rule['request_headers']['locations'])) {
                 continue;
             }
             if ($request->headers->has('Access-Control-Request-Method')) {
@@ -168,7 +167,6 @@ class CorsMakerService
             if (!empty($rule['cors_headers']['max_age'])) {
                 $response = ($response)->header('Access-Control-Max-Age', $rule['cors_headers']['max_age']);
             }
-            break;
         }
         return $response;
     }

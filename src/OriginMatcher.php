@@ -24,6 +24,8 @@ class OriginMatcher
         if (RegexpChecker::check($originPattern)) {
             if (preg_match($originPattern, $origin)) {
                 return true;
+            } else {
+                return false;
             }
         }
         return false;
