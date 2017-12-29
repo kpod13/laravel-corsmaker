@@ -14,7 +14,7 @@ class MethodMatcher
      * @return bool
      *
      */
-    public static function match(string $method, array $allowedMethods): bool
+    public static function match($method, array $allowedMethods)
     {
         if (empty($allowedMethods) || empty($method)) {
             return false;

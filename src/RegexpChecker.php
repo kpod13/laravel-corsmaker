@@ -12,7 +12,7 @@ class RegexpChecker
      *
      * @return bool
      */
-    public static function check(string $string): bool
+    public static function check($string)
     {
         $pattern = '/^\/.*\/.?$/i';
         if (preg_match($pattern, $string)) {

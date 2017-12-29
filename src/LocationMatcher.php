@@ -13,7 +13,7 @@ class LocationMatcher
      *
      * @return bool
      */
-    public static function match(string $location, array $locationPatterns): bool
+    public static function match($location, array $locationPatterns)
     {
         if ($location == '' || empty($locationPatterns)) {
             return false;

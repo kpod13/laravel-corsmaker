@@ -13,7 +13,7 @@ class OriginMatcher
      *
      * @return bool
      */
-    public static function match(string $origin, string $originPattern): bool
+    public static function match($origin, $originPattern)
     {
         if (empty($origin) || empty($originPattern)) {
             return false;

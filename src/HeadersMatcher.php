@@ -13,7 +13,7 @@ class HeadersMatcher
      *
      * @return bool
      */
-    public static function match(array $requestedHeaders, array $allowedHeaders): bool
+    public static function match(array $requestedHeaders, array $allowedHeaders)
     {
         if (empty($allowedHeaders) || empty($requestedHeaders)) {
             return false;

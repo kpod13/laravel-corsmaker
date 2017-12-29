@@ -15,7 +15,7 @@ class CorsMakerService
      *
      * @return array
      */
-    private function normalizeOptions(array $options): array
+    private function normalizeOptions(array $options)
     {
         $template = [
             'rule' => [
@@ -60,7 +60,7 @@ class CorsMakerService
      *
      * @return bool
      */
-    public function isSimpleCorsRequest(Request $request): bool
+    public function isSimpleCorsRequest(Request $request)
     {
         $simpleMethods = ['GET', 'POST', 'HEAD'];
         if ($request->hasHeader('Origin') and in_array($request->getMethod(), $simpleMethods)) {
@@ -74,7 +74,7 @@ class CorsMakerService
      *
      * @return bool
      */
-    public function isPrefliedCorsRequest(Request $request): bool
+    public function isPrefliedCorsRequest(Request $request)
     {
         if ($request->hasHeader('Origin') and $request->getMethod() == 'OPTIONS') {
             return true;
@@ -90,7 +90,7 @@ class CorsMakerService
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function addSimpleCorsHeaders(Request $request, Response $response): Response
+    public function addSimpleCorsHeaders(Request $request, Response $response)
     {
         $options = $this->normalizeOptions(config('corsmaker'));
         $rules = $options['rules'];
@@ -128,7 +128,7 @@ class CorsMakerService
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function addPreflightCorsHeaders(Request $request, Response $response): Response
+    public function addPreflightCorsHeaders(Request $request, Response $response)
     {
         $options = $this->normalizeOptions(config('corsmaker'));
         $rules = $options['rules'];
