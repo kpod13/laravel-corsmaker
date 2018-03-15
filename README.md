@@ -27,7 +27,7 @@ protected $middleware = [
 
 ### Install default config
 ```bash
-php artisan vendor:publish --provider="Kpod13\Corsmaker\ServiceProvider"
+php artisan vendor:publish --provider="Kpod13\CorsMaker\ServiceProvider"
 ```
 
 ## Configuration
