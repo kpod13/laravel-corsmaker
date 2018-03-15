@@ -18,7 +18,7 @@ class ServiceProvider extends BaseServiceProvider
           __DIR__.'/config/corsmaker.php' => config_path('corsmaker.php'),
         ]);
 
-        $kernel = $this->app->make(Kernel::class);
+        $kernel = $this->app->make(\Illuminate\Contracts\Http\Kernel::class);
 
         if (! $kernel->hasMiddleware(CorsMakerHandler::class)) {
             $kernel->prependMiddleware(CorsMakerHandler::class);
